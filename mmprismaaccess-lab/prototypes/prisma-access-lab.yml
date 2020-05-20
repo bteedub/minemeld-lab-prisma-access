@@ -1,13 +1,13 @@
 description: >
-    Miners for Prisma Access API
+    Miners for Prisma Access Lab API
 url: https://docs.paloaltonetworks.com/prisma/prisma-access/prisma-access-panorama-admin/prisma-access-overview/retrieve-ip-addresses-for-prisma-access
 
 prototypes:
     all_egress:
-        author: MineMeld Core Team
+        author: MineMeld Core Team - Modified by bwright
         description: >
-            All Prisma Access egress IPs 
-        class: mmprismaaccess.Miner
+            All Prisma Access egress IPs - Using api v2.
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -15,7 +15,7 @@ prototypes:
         indicator_types:
             - any
         config:
-            source_name: prismaaccess.egress_all
+            source_name: prismaaccess-lab.egress_all
             age_out:
                 sudden_death: true
                 default: null
@@ -23,12 +23,14 @@ prototypes:
                 share_level: red
                 confidence: 100
             params:
-                get_egress_ip_all: "yes"
+                serviceType: "all"
+                addrType: "all"
+                location: "all"
     portal_public:
         author: MineMeld Core Team
         description: >
             All Prisma Access Portal public IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -36,7 +38,7 @@ prototypes:
         indicator_types:
             - any
         config:
-            source_name: prismaaccess.portal_public
+            source_name: prismaaccess-lab.portal_public
             age_out:
                 sudden_death: true
                 default: null
@@ -44,13 +46,14 @@ prototypes:
                 share_level: red
                 confidence: 100
             params:
-                fwType: "gpcs_gp_portal"
-                addrType: "public_ip"
+                serviceType: "gp_portal"
+                addrType: "all"
+                location: "all"
     portal_egress:
         author: MineMeld Core Team
         description: >
             All Prisma Access Portal public IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -72,7 +75,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Portal loopback IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -94,7 +97,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Gateway public IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -116,7 +119,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Gateway egress IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -138,7 +141,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Gateway loopback IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -160,7 +163,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Remote Network public IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -182,7 +185,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Remote Network egress IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -204,7 +207,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Remote Network loopback IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -226,7 +229,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Clean Pipe public IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -248,7 +251,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Clean Pipe egress IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
@@ -270,7 +273,7 @@ prototypes:
         author: MineMeld Core Team
         description: >
             All Prisma Access Clean Pipe loopback IPs 
-        class: mmprismaaccess.Miner
+        class: mmprismaaccess-lab.Miner
         development_status: EXPERIMENTAL
         node_type: miner
         tags:
