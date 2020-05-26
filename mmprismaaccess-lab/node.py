@@ -66,16 +66,17 @@ class Miner(BasePollerFT):
         headers = {
             'header-api-key': api_key
         }
-
+        api_query_params = { "serviceType": "all", "addrType": "all", "location": "all" }
         rkwargs = dict(
             stream=False,
-            verify=self.verify_cert,
+            verify=False,
             timeout=self.polling_timeout,
             headers=headers,
             params=self.api_params
+            data=api_query_params
         )
 
-        r = requests.get(
+        r = requests.post(
             url,
             **rkwargs
         )
