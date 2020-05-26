@@ -26,3 +26,4 @@ prototypes:
                 serviceType: "all"
                 addrType: "all"
                 location: "all"
+                api_key: "<INSERT-KEY-HERE>"
