@@ -29,7 +29,7 @@ class Miner(BasePollerFT):
 
         self.api_params = self.config.get('api_params', {})
         api_key = self.config.get('api_key', {})
-        self.api_keys = api_keys
+        self.api_keys = api_key
         if(self.api_keys is None):
             self._load_side_config()
 
