@@ -72,7 +72,7 @@ class Miner(BasePollerFT):
             verify=False,
             timeout=self.polling_timeout,
             headers=headers,
-            params=self.api_params
+            params=self.api_params,
             data=api_query_params
         )
 
