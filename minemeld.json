@@ -6,10 +6,10 @@
     "description": "MineMeld for Prisma Access lab API",
     "entry_points": {
         "minemeld_nodes": {
-            "mmprismaaccess-lab.Miner": "mmprismaaccess-lab.node:Miner"
+            "mmprismaaccesslab.Miner": "mmprismaaccesslab.node:Miner"
         },
         "minemeld_prototypes": {
-            "mmprismaaccess-lab.prototypes": "mmprismaaccess-lab:prototypes"
+            "mmprismaaccesslab.prototypes": "mmprismaaccesslab:prototypes"
         }
     },
     "manifest_version": 0
