@@ -18,7 +18,7 @@ class Miner(BasePollerFT):
     def configure(self):
         super(Miner, self).configure()
 
-        self.verify_cert = self.config.get('verify_cert', True)
+        self.verify_cert = self.config.get('verify_cert', False)
         self.polling_timeout = self.config.get('polling_timeout', 20)
 
         self.api_keys = []
