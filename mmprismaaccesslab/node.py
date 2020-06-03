@@ -12,13 +12,13 @@ from minemeld.ft.utils import interval_in_sec
 LOG = logging.getLogger(__name__)
 
 
-PRISMA_ACCESS_API_QUERY = 'https://api.lab.gpcloudservice.com/getPrismaAccessIP/v2'
+PRISMA_ACCESS_API_QUERY = 'https://api.gpcloudservice.com/getAddrList/latest'
 
 class Miner(BasePollerFT):
     def configure(self):
         super(Miner, self).configure()
 
-        self.verify_cert = self.config.get('verify_cert', False)
+        self.verify_cert = self.config.get('verify_cert', True)
         self.polling_timeout = self.config.get('polling_timeout', 20)
 
         self.api_keys = []
@@ -28,10 +28,8 @@ class Miner(BasePollerFT):
         )
 
         self.api_params = self.config.get('api_params', {})
-        api_key = self.config.get('api_key', {})
-        self.api_keys = api_key
-        if(self.api_keys is None):
-            self._load_side_config()
+
+        self._load_side_config()
 
     def _load_side_config(self):
         try:
@@ -66,17 +64,16 @@ class Miner(BasePollerFT):
         headers = {
             'header-api-key': api_key
         }
-        api_query_params = { "serviceType": "all", "addrType": "all", "location": "all" }
+
         rkwargs = dict(
             stream=False,
-            verify=False,
+            verify=self.verify_cert,
             timeout=self.polling_timeout,
             headers=headers,
-            params=self.api_params,
-            data=api_query_params
+            params=self.api_params
         )
 
-        r = requests.post(
+        r = requests.get(
             url,
             **rkwargs
         )
@@ -156,7 +153,10 @@ class Miner(BasePollerFT):
         if config is not None:
             side_config_path = config.get('side_config', None)
         if side_config_path is None:
-            side_config_path = os.path.join(os.environ['MM_CONFIG_DIR'],'{}_side_config.yml'.format(name))
+            side_config_path = os.path.join(
+                os.environ['MM_CONFIG_DIR'],
+                '{}_side_config.yml'.format(name)
+            )
 
         try:
             os.remove(side_config_path)
