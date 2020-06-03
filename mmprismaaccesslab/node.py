@@ -12,13 +12,13 @@ from minemeld.ft.utils import interval_in_sec
 LOG = logging.getLogger(__name__)
 
 
-PRISMA_ACCESS_API_QUERY = 'https://api.gpcloudservice.com/getAddrList/latest'
+PRISMA_ACCESS_API_QUERY = 'https://api.lab.gpcloudservice.com/getPrismaAccessIP/v2'
 
 class Miner(BasePollerFT):
     def configure(self):
         super(Miner, self).configure()
 
-        self.verify_cert = self.config.get('verify_cert', True)
+        self.verify_cert = self.config.get('verify_cert', False)
         self.polling_timeout = self.config.get('polling_timeout', 20)
 
         self.api_keys = []
@@ -65,12 +65,15 @@ class Miner(BasePollerFT):
             'header-api-key': api_key
         }
 
+        payload = '{ "serviceType": "gp_gateway","addrType": "all","location": "all"}'
+        
         rkwargs = dict(
             stream=False,
-            verify=self.verify_cert,
+            verify=False,
             timeout=self.polling_timeout,
             headers=headers,
-            params=self.api_params
+            params=self.api_params,
+            data=payload
         )
 
         r = requests.get(
