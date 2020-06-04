@@ -114,7 +114,7 @@ class Miner(BasePollerFT):
             try:
                 for address in self._query_api(api_key):
                     if isinstance(address, str) or isinstance(address, unicode):
-                        _, real_address = address
+                        real_address = address
                     elif isinstance(addresses, dict):
                         address = address["address"]
                     else:
