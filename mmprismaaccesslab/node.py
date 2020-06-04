@@ -76,7 +76,7 @@ class Miner(BasePollerFT):
             data=payload
         )
 
-        r = requests.get(
+        r = requests.post(
             url,
             **rkwargs
         )
