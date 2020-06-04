@@ -98,7 +98,7 @@ class Miner(BasePollerFT):
         if result is None:
             raise RuntimeError('{} - invalid format returned'.format(self.name))
         
-        addr_list = ['']
+        addr_list = []
         for addressEntry in result:
             addr_list = addr_list + addressEntry.get('addresses')
             
