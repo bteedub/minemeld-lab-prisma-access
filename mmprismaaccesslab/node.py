@@ -99,7 +99,7 @@ class Miner(BasePollerFT):
             raise RuntimeError('{} - invalid format returned'.format(self.name))
         
         addr_list = ['']
-        for addressEntry in result.get('result', None):
+        for addressEntry in result
             addr_list = addr_list + addressEntry.get('addresses')
             
         if addr_list is None or not isinstance(addr_list, list):
