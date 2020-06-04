@@ -2,6 +2,8 @@
 
 MineMeld Miner for Prisma Access Lab API
 
+Almost all of this code is branched from the Palo Alto Network Prisma Access Miner work that Luigi Mori had already done.
+
 # How To Install
 
 1. Go to System > Extensions
