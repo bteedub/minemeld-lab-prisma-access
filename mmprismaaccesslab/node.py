@@ -97,8 +97,11 @@ class Miner(BasePollerFT):
         result = result.get('result', None)
         if result is None:
             raise RuntimeError('{} - invalid format returned'.format(self.name))
-
-        addr_list = result.get('addrList', None)
+        
+        addr_list = ['']
+        for addressEntry in result.get('result', None):
+            addr_list = addr_list + addressEntry.get('addresses')
+            
         if addr_list is None or not isinstance(addr_list, list):
             raise RuntimeError('{} - invalid format returned'.format(self.name))
 
