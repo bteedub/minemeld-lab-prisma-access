@@ -1,7 +1,5 @@
 # minemeld-prisma-access
 
-####THIS DOES NOT WORK YET####
-
 MineMeld Miner for Prisma Access Lab API
 
 # How To Install
@@ -14,4 +12,12 @@ MineMeld Miner for Prisma Access Lab API
 6. Click Install
 7. Click Activate on the installed extension
 
-Thanks @gibsop1!
+NOTE:  IN ORDER TO HAVE THIS WORK, IT CURRENTLY PULLS THE API KEY FROM A SIDE_CONFIG FILE.  THE SIDE CONFIG FILE SHOULD BE IN YML FORMAT IN THE /opt/minemeld/local/config DIRECTORY, WITH THE FILE NAME BEING <NODE-NAME>_side_config.yml.  FOR EXAMPLE, IF YOUR NODE NAME IS lab-prisma-miner, THEN THE SIDE CONFIG SHOULD BE NAMED /opt/minemeld/local/config/lab-prisma-miner_side_config.yml.
+  
+THE FILE SHOULD BE FORMATTED AS FOLLOWS:
+
+{
+api_keys: ["API-KEY-HERE"]
+}
+
+Thanks @bteedub
